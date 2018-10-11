@@ -1,0 +1,16 @@
+from cv2 import *
+cam = VideoCapture(0)
+s, img = cam.read()
+if s:
+    imshow("cam-test",img)
+    waitKey(0)
+    destroyWindow("cam-test")
+    imwrite("Image.jpg",img)
+image = imread("Image.jpg")
+grayImage = cvtColor(image,COLOR_BGR2GRAY)
+grayImage = cvtColor(grayImage,COLOR_GRAY2BGR)
+line(grayImage, (0, 0), (grayImage.shape[1],grayImage.shape[0]), (0, 0, 255), 5)
+rectangle(grayImage, (100, 50), (grayImage.shape[1]-100,grayImage.shape[0]-50), (255, 0, 0), 3)
+imshow("view", grayImage)
+waitKey(0)
+destroyWindow("view")
